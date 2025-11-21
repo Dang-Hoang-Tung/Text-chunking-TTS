@@ -211,7 +211,7 @@ We try to keep each chunk as one coherent thought, with punctuation that matches
 - Paragraphs are structural units, we don't cross them.
 - Sentences are natural prosodic units, simple default chunks.
 - Commas are softer boundaries, another simple default.
-- Subordinators (`when/while/before/until/...`) mark clause boundaries, which are good secondary pause points for long sentences.
+- Subordinators (`when/while/before/until/...`) mark clause boundaries, which are good pause points for long sentences.
 
 
 ## 4. Extending to Other Languages
