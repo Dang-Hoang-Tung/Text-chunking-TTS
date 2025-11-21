@@ -178,13 +178,13 @@ Hence, `chunk_tts.py` contains a set of heuristics that are lightweight and runs
 
 #### Removing redundant dashes
 
-We detect patterns like `-some words-` using regex, meaning it's an "aside" point. These are typically prefixed by a discourse word (e.g. `-particularly ...`). See `DISCOURSE_RHS` in the code for a list of common discourse words.
+We detect patterns like `-some words-` using regex, meaning it's an "aside" point. "Aside" points are also typically prefixed by a discourse word (e.g. `-particularly ...`). See `DISCOURSE` in the code for a list of common discourse words.
 
 e.g. `...-though possibly inaccurately-...` transforms to `..., though possibly inaccurately, ...`
 
 This preserves meaning but expresses it in a way TTS handles more naturally (commas instead of weird dash pauses).
 
-We avoid converting true hyphenated compounds like `sweet-tart` which actually make sense. If they don't match the discourse pattern, we leave them as-is.
+We avoid converting true hyphenated compounds like `sweet-tart` or `cross-pollination` which actually make sense. If they don't match the discourse pattern, we leave them as-is.
 
 #### Removing line breaks
 

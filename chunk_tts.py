@@ -50,7 +50,7 @@ SUBORDINATORS = {
 }
 
 # Right-hand discourse markers that usually indicate a clause break after a dash
-DISCOURSE_RHS = {
+DISCOURSE = {
     "however",
     "therefore",
     "moreover",
@@ -105,7 +105,7 @@ def normalize_for_tts(text: str) -> str:
         left = match.group(1)
         dash = match.group(2)
         right = match.group(3)
-        if right.lower() in DISCOURSE_RHS:
+        if right.lower() in DISCOURSE:
             # "Asia-particularly" -> "Asia, particularly"
             return f"{left}, {right}"
         else:
