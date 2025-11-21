@@ -205,41 +205,33 @@ Result: chunks are usually whole sentences; long sentences become clause-sized p
 
 #### Reasoning (Why these choices help TTS)
 
-- Paragraphs are structural units, we don’t cross them.
+We try to keep each chunk as one coherent thought, with punctuation that matches how you'd speak it aloud.
+
+- Paragraphs are structural units, we don't cross them.
 - Sentences are natural prosodic units, simple default chunks.
-- Commas are softer boundaries used as fallback before hard cuts.
+- Commas are softer boundaries, another simple default.
 - Subordinators (when/while/before/until/...) mark clause boundaries, which are good secondary pause points for long sentences.
 
 
+## 4. Extending to Other Languages
 
-Normalization
+Some of the things we would need to change to support languages beyond English:
 
-TTS handles commas and sentence endings more predictably than arbitrary dashes.
+- Sentence boundaries: different punctuation (e.g. `。` in Japanese/Chinese, `¿/¡` in Spanish).
+- Clause markers: other languages have different subordinators or conjunctions; our English list won't apply.
+- Dash conventions: usage and meaning can differ by language.
+- Tokenization: some languages don't use spaces (Chinese, Japanese, Thai), so breaking the text at a space won't work. (We would need to be careful not to break characters that go together)
+- Prosody: average sentence lengths and natural pause points vary across languages.
 
-Turning -though possibly inaccurately- into , though possibly inaccurately, makes the aside sound like a natural parenthetical.
+To build a multi-lingual tool for text chunking, we would need a robust heuristics engine that runs on per-language custom configs (sentence-ending marks, subordinator lists, discourse rules, language-aware tokenizer). 
 
-Preserving hyphenated compounds keeps pronunciation and meaning correct.
+Crucially, we would need domain experts in natural languages to craft such heuristics configs.
 
-Clean spacing avoids odd pauses or tokenization issues.
+## 5. Thinking Far Ahead
 
-👉 Overall: we try to keep each chunk as one coherent thought, with punctuation that matches how you’d speak it aloud.
+There are improvements to be made on these simple heuristics:
 
-
-
-
-1. Extending to Other Languages
-
-To support languages beyond English, we’d need to rethink:
-
-Sentence boundaries: different punctuation (e.g. 。 in Japanese/Chinese, ¿/¡ in Spanish).
-
-Clause markers: other languages have different subordinating conjunctions; our English list won’t apply.
-
-Dash & hyphen conventions: usage and meaning can differ by language.
-
-Tokenization: languages without spaces (Chinese, Japanese, Thai) need proper word segmentation; our [A-Za-z]+ assumptions break.
-
-Prosody & style: natural pause points and typical sentence lengths vary by language.
-
-A robust multilingual version would likely need per-language configs (sentence-ending marks, subordinator lists, dash rules) and possibly a language-aware tokenizer instead of simple English regexes.
-
+- Short chunks can be merged: if chunks are semantically relevant, they can be merged while staying under the 200 character limit. This would give the TTS model more context for natural speech.
+- Semantics, semantics: the current version uses simple heuristic. ML models can more accurately capture these complex rules (especially neural nets) across languages. That may help produce better heuristics.
+  - Making ML-based approaches practical: ML-based methods may be sufficiently performant if we can shrink the neural net size required to capture their intricacies. (so they can run on device!). We start with heuristics and supervised learning to teach them, then find ways to shrink the models.
+- Streaming: currently the script takes a whole text input and chunks them. A more TTS-friendly version would consume from a stream and generate chunks on the fly.
