@@ -1,0 +1,37 @@
+[
+  {
+    "chunk": "when the sun rises over the distant hills and the birds begin to sing their morning songs",
+    "rule": "clause_subordinator",
+    "length": 89
+  },
+  {
+    "chunk": "while the dew still clings to the grass and the breeze carries the scent of blooming flowers through the quiet streets",
+    "rule": "clause_subordinator",
+    "length": 118
+  },
+  {
+    "chunk": "where people slowly start to stir from their sleep and the world gently shifts from night to day",
+    "rule": "clause_subordinator",
+    "length": 96
+  },
+  {
+    "chunk": "with a sense of calm that is fleeting yet beautiful and everything feels suspended in a moment of possibility",
+    "rule": "clause_subordinator",
+    "length": 109
+  },
+  {
+    "chunk": "before the rush of time resumes its usual pace and the responsibilities of life return to fill the hours",
+    "rule": "clause_subordinator",
+    "length": 104
+  },
+  {
+    "chunk": "with motion sound and urgency",
+    "rule": "clause_subordinator",
+    "length": 29
+  },
+  {
+    "chunk": "until the sun once again sinks below the horizon and darkness wraps the earth in stillness once more",
+    "rule": "clause_subordinator",
+    "length": 100
+  }
+]

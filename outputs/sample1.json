@@ -1,0 +1,52 @@
+[
+  {
+    "chunk": "Apples are one of the most widely cultivated and consumed fruits in the world.",
+    "rule": "sentence",
+    "length": 78
+  },
+  {
+    "chunk": "Known for their crisp texture, sweet-tart flavor, and impressive versatility, apples have a long and fascinating history that spans cultures, continents, and centuries.",
+    "rule": "sentence",
+    "length": 168
+  },
+  {
+    "chunk": "Botanically classified as Malus domestica, apples belong to the Rosaceae family, which also includes pears, cherries, and roses.",
+    "rule": "sentence",
+    "length": 128
+  },
+  {
+    "chunk": "The domestic apple traces its ancestry to the wild apple species Malus sieversii, native to the mountains of Central Asia, particularly in what is now Kazakhstan.",
+    "rule": "sentence",
+    "length": 162
+  },
+  {
+    "chunk": "Ancient traders along the Silk Road helped spread apples westward to Europe and eastward to China.",
+    "rule": "sentence",
+    "length": 98
+  },
+  {
+    "chunk": "Over time, through both natural cross, pollination and human intervention, the apple evolved into the diverse array of cultivars we enjoy today.",
+    "rule": "sentence",
+    "length": 144
+  },
+  {
+    "chunk": "Apples were highly prized by ancient civilizations.",
+    "rule": "sentence",
+    "length": 51
+  },
+  {
+    "chunk": "The Greeks and Romans cultivated them extensively, and they became symbolic in many myths and traditions.",
+    "rule": "sentence",
+    "length": 105
+  },
+  {
+    "chunk": "In Norse mythology, apples were believed to grant eternal youth.",
+    "rule": "sentence",
+    "length": 64
+  },
+  {
+    "chunk": "In the biblical tradition, the apple became associated, though possibly inaccurately, with the fruit of the Tree of Knowledge.",
+    "rule": "sentence",
+    "length": 126
+  }
+]
