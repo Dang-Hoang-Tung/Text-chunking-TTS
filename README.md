@@ -192,8 +192,9 @@ We remove single newline characters because they are redundant and seem noisy. W
 
 ### 3.3. The chunking heuristics
 
-- Split into paragraphs using blank lines. Paragraphs are hard boundaries (no chunk crosses them).
+To chunk the text, we take these steps:
 
+- Split the text into paragraphs using blank lines. Paragraphs are hard boundaries (no chunk crosses them).
 - Within each paragraph, we:
   - Split into sentences using major punctuations (`.`, `?`, `!`) as sentence ending characters.
   - If a sentence is ≤ 200 characters, we emit it as a chunk with rule: "sentence".
@@ -205,12 +206,12 @@ Result: chunks are usually whole sentences; long sentences become clause-sized p
 
 #### Reasoning (Why these choices help TTS)
 
-We try to keep each chunk as one coherent thought, with punctuation that matches how you'd speak it aloud.
+We try to keep each chunk as one coherent thought, with punctuation that matches how people would speak it aloud.
 
 - Paragraphs are structural units, we don't cross them.
 - Sentences are natural prosodic units, simple default chunks.
 - Commas are softer boundaries, another simple default.
-- Subordinators (when/while/before/until/...) mark clause boundaries, which are good secondary pause points for long sentences.
+- Subordinators (`when/while/before/until/...`) mark clause boundaries, which are good secondary pause points for long sentences.
 
 
 ## 4. Extending to Other Languages
@@ -223,15 +224,13 @@ Some of the things we would need to change to support languages beyond English:
 - Tokenization: some languages don't use spaces (Chinese, Japanese, Thai), so breaking the text at a space won't work. (We would need to be careful not to break characters that go together)
 - Prosody: average sentence lengths and natural pause points vary across languages.
 
-To build a multi-lingual tool for text chunking, we would need a robust heuristics engine that runs on per-language custom configs (sentence-ending marks, subordinator lists, discourse rules, language-aware tokenizer). 
-
-Crucially, we would need domain experts in natural languages to craft such heuristics configs.
+To build a multi-lingual tool for text chunking, we would need a robust heuristics engine that runs on per-language custom configs (sentence-ending marks, subordinator lists, discourse rules, language-aware tokenizer).
 
 ## 5. Thinking Far Ahead
 
 There are improvements to be made on these simple heuristics:
 
 - Short chunks can be merged: if chunks are semantically relevant, they can be merged while staying under the 200 character limit. This would give the TTS model more context for natural speech.
-- Semantics, semantics: the current version uses simple heuristic. ML models can more accurately capture these complex rules (especially neural nets) across languages. That may help produce better heuristics.
-  - Making ML-based approaches practical: ML-based methods may be sufficiently performant if we can shrink the neural net size required to capture their intricacies. (so they can run on device!). We start with heuristics and supervised learning to teach them, then find ways to shrink the models.
 - Streaming: currently the script takes a whole text input and chunks them. A more TTS-friendly version would consume from a stream and generate chunks on the fly.
+- Semantics, semantics: the current version uses simple heuristic. ML models can more accurately capture these complex rules (especially neural nets) across languages. These ML models may help produce better heuristics.
+- Making ML-based approaches practical for direct use: ML-based methods may be sufficiently performant if we can shrink the neural net size required to capture their intricacies. (so they can run on device!). We start with heuristics and supervised learning to teach them, then find ways to shrink the models while preserving knowledge.
