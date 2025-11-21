@@ -157,7 +157,7 @@ Sample 2 solution:
 
 ## 3. How I approach the task
 
-### 3.1. Background, preliminary tests
+### 3.1. Background, preliminary testing
 
 I begin by reviewing the research and development in the relevant domain. Chunking has been a topic of NLP research for over 30 years. It is an essential part of understanding/emulating natural language.
 
