@@ -30,7 +30,7 @@ from typing import List, Dict, Any, Optional
 
 # ---------- CONFIG / CONSTANTS ----------
 
-MAX_LEN_DEFAULT = 200  # soft-ish max chunk length (characters)
+MAX_LEN_DEFAULT = 200
 
 # Subordinating markers for clause splitting
 SUBORDINATORS = {
@@ -49,7 +49,7 @@ SUBORDINATORS = {
     "if",
 }
 
-# Right-hand discourse markers that usually indicate a clause break after a dash
+# Discourse markers that usually indicate a clause break after a dash
 DISCOURSE = {
     "however",
     "therefore",
