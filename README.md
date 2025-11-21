@@ -194,7 +194,7 @@ We remove single newline characters because they are redundant and seem noisy. W
 
 To chunk the text, we take these steps:
 
-- Split the text into paragraphs using blank lines. Paragraphs are hard boundaries (no chunk crosses them).
+- Split the text into paragraphs. Paragraphs are hard boundaries (no chunk crosses them).
 - Within each paragraph, we:
   - Split into sentences using major punctuations (`.`, `?`, `!`) as sentence ending characters.
   - If a sentence is ≤ 200 characters, we emit it as a chunk with rule: "sentence".
@@ -202,15 +202,15 @@ To chunk the text, we take these steps:
   - If punctuation rules fail to chunk below 200 characters, we break into clauses at subordinators (e.g. `when`, `where`, `while`, etc). See `SUBORDINATORS` in the code.
   - Finally, if all else fails, we break at the length limit (200).
 
-Result: chunks are usually whole sentences; long sentences become clause-sized pieces that sound natural for TTS and stay under ~200 characters.
+Result for TTS (hopefully): chunks are usually whole sentences; long sentences become clause-sized pieces that sound natural for TTS and stay under 200 characters. This helps the model efficiently generate speech from already natural sounding phrases.
 
 #### Reasoning (Why these choices help TTS)
 
 We try to keep each chunk as one coherent thought, with punctuation that matches how people would speak it aloud.
 
 - Paragraphs are structural units, we don't cross them.
-- Sentences are natural prosodic units, simple default chunks.
-- Commas are softer boundaries, another simple default.
+- Sentences (with major punctuation) are natural prosodic units, they are simple default chunks.
+- Minor punctuations within sentences are softer boundaries, also simple chunks.
 - Subordinators (`when/while/before/until/...`) mark clause boundaries, which are good pause points for long sentences.
 
 
