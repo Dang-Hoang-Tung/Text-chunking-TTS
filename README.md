@@ -8,7 +8,7 @@ In this document, I will show:
 2. My solutions
 3. How I approach the task (the interesting stuff!)
 
-Furthermore, in this codebase, you will find `chunk_tts.py`, the script containing all the code. It reads an input file and chunks the text using JSON format.
+In this codebase, you will find `chunk_tts.py`, the script containing all the code. It reads an input file and chunks the text into JSON format.
 
 Usage:
 
