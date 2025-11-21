@@ -182,9 +182,9 @@ We detect patterns like `-some words-` using regex, meaning it's an "aside" poin
 
 e.g. `...-though possibly inaccurately-...` transforms to `..., though possibly inaccurately, ...`
 
-This preserves meaning but expresses it in a way TTS handles more naturally (commas instead of weird dash pauses).
+Reason: This preserves meaning but expresses it in a way TTS handles more naturally (commas instead of weird dash pauses).
 
-We avoid converting true hyphenated compounds like `sweet-tart` or `cross-pollination` which actually make sense. If they don't match the discourse pattern, we leave them as-is.
+Also, we avoid converting true hyphenated compounds like `sweet-tart` or `cross-pollination` which actually make sense. If they don't match the discourse patterns above, we leave them as-is.
 
 #### Removing line breaks
 
